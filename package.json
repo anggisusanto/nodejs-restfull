@@ -1,0 +1,40 @@
+{
+  "name": "nodejs-restfull",
+  "version": "1.0.0",
+  "description": "nodejs express postgresql oauth2",
+  "main": "app.js",
+  "scripts": {
+    "start:dev": "nodemon ./bin/www",
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertwired/nodejs-restfull.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "posgtgresql",
+    "restfull",
+    "API",
+    "oauth2"
+  ],
+  "author": "antscpk06@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertwired/nodejs-restfull/issues"
+  },
+  "homepage": "https://github.com/albertwired/nodejs-restfull#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mocha": "^5.0.5",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.37.5",
+    "sinon": "^4.5.0"
+  }
+}
