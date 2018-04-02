@@ -39,7 +39,7 @@ describe('Users Routes', ()=>{
 			});
 		});
 	});
-	describe("[POST] /auth/login",()=>{
+	describe("[POST] /auth/login Positive",()=>{
 		it("should do login",(done)=>{
 			chai.request(server)
 			.post('/auth/login')
@@ -59,5 +59,21 @@ describe('Users Routes', ()=>{
 			})
 		});
 	});
-	
+	describe("[POST] /auth/login Negative",()=>{
+		it("should do login",(done)=>{
+			chai.request(server)
+			.post('/auth/login')
+			.send({
+				email:"albert@me.com",
+				password:"strongtoo"
+			})
+			.end((err,res)=>{
+				should.not.exist(err);
+				res.status.should.equal(401);
+				res.body.status.should.equal("FAILED")
+				res.body.errors.should.equal("Invalid password");
+				done();
+			})
+		});
+	});
 });

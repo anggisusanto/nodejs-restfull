@@ -20,17 +20,28 @@ module.exports = {
 	    }));
 	},
 	login(req,res){
+		let userResult
 		return User.findOne({
 			where: {email:req.body.email}
 		}).then(user=>{
-			console.log(secret)
-			res.status(200).send({
-				status:"OK",
-		    	result: {
-		    		access_token: jwt.sign({id:user.id},secret,{expiresIn:86400})
-		    	},
-		    	errors:{}
-		    });
+			userResult = user;
+			return bcrypt.compareSync(req.body.password, userResult.password_digest);
+		}).then(match=>{
+			console.log(match);
+			if(!match){
+				res.status(401).send({
+					status: "FAILED",
+					errors: "Invalid password"
+				});
+			}else{
+				res.status(200).send({
+					status:"OK",
+			    	result: {
+			    		access_token: jwt.sign({id:userResult.id},secret,{expiresIn:86400})
+			    	},
+			    	errors:{}
+			    });
+			}
 		}).catch(error=> res.status(400).send({
 	    	errors: error
 		}));
