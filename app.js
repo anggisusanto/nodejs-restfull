@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 require('./server/routes')(app);
 app.get('*', (req, res) => res.status(200).send({
-  message: 'Simple nodejs RESTfull API with express sequlize and PostgreSQL',
+  message: 'Simple nodejs RESTfull API with express sequelize and PostgreSQL',
 }));
 
 module.exports = app;
